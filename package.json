@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "semantic-release": "^21.0.6"
+  },
+  "release": {
+    "branches": [
+      "master",
+      "semantic-release",
+      {
+        "name": "develop",
+        "prerelease": true
+      }
+    ]
+  }
+}
