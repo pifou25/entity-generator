@@ -5,7 +5,7 @@
   "release": {
     "branches": [
       "master",
-      "semantic-release",
+      "semantic_release",
       {
         "name": "develop",
         "prerelease": true
