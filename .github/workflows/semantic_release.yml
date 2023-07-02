@@ -43,5 +43,4 @@ jobs:
         if: ${{ env.NEXT_RELEASE_VERSION != '' }}
         run: |
           echo "New release : ${{ env.NEXT_RELEASE_VERSION }}" >> $GITHUB_STEP_SUMMARY
-          echo "Version = ${{ steps.semantic.outputs.new_release_version }}" >> $GITHUB_STEP_SUMMARY
   
