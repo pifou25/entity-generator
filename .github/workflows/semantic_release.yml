@@ -3,7 +3,7 @@ name: Semantic Release
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, semantic_release ]
   # this is to manually trigger the worklow
   workflow_dispatch:
     inputs:
@@ -35,8 +35,15 @@ jobs:
               --package=@semantic-release/exec@6 \
               --package=@semantic-release/git@10 \
               semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Display Github summary
-        if: steps.semantic.outputs.new_release_published == 'true'
+        if: ${{ env.NEXT_RELEASE_VERSION != '' }}
         run: |
-          echo "New release : ${{ steps.semantic.outputs.new_release_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "New release : ${{ env.NEXT_RELEASE_VERSION == '' }}" >> $GITHUB_STEP_SUMMARY
+          echo "Version = ${{ steps.semantic.outputs.new_release_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "Major:${{ steps.semantic.outputs.new_release_major_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "Minor:${{ steps.semantic.outputs.new_release_minor_version }}" >> $GITHUB_STEP_SUMMARY
+          echo "Patch:${{ steps.semantic.outputs.new_release_patch_version }}" >> $GITHUB_STEP_SUMMARY
+  

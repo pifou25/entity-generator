@@ -1,6 +1,6 @@
-## [1.1.1](https://github.com/pifou25/entity-generator/compare/v1.1.0...v1.1.1) (2023-07-02)
+# 1.0.0 (2023-07-02)
 
 
-### Bug Fixes
+### Features
 
-* add changelog plugin ([302e6ae](https://github.com/pifou25/entity-generator/commit/302e6ae8cd225ed3cd94fcf2e8b98048f15e4cd2))
+* add Semantic release ([#1](https://github.com/pifou25/entity-generator/issues/1)) ([1e90d9a](https://github.com/pifou25/entity-generator/commit/1e90d9a75540f05be333c6672e6ae0287bf878e9))
