@@ -6,7 +6,6 @@
   "release": {
     "branches": [
       "master",
-      "semantic_release",
       {
         "name": "develop",
         "prerelease": true
@@ -18,7 +17,7 @@
       [
         "@semantic-release/changelog",
         {
-          "changelogFile": "changelog.md"
+          "changelogFile": "CHANGELOG.md"
         }
       ],
       [
@@ -33,7 +32,7 @@
         "@semantic-release/git",
         {
           "assets": [
-            "changelog.md"
+            "CHANGELOG.md"
           ]
         }
       ]
