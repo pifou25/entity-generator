@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/pifou25/entity-generator/compare/v1.0.0...v1.0.1) (2023-07-02)
+
+
+### Bug Fixes
+
+* display next release version in summary ([1283e1b](https://github.com/pifou25/entity-generator/commit/1283e1bfedef0cd76db5e15b4415111fe8a9cb67))
+
 # 1.0.0 (2023-07-02)
 
 
