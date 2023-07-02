@@ -35,9 +35,6 @@ jobs:
               --package=@semantic-release/exec@6 \
               --package=@semantic-release/git@10 \
               semantic-release
-          printenv
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Display Github summary
         if: steps.semantic.outputs.new_release_published == 'true'
