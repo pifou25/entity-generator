@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/pifou25/entity-generator/compare/v1.0.3...v1.1.0) (2023-07-02)
+
+
+### Features
+
+* add Dockerfile ([ed9d915](https://github.com/pifou25/entity-generator/commit/ed9d915107419a7e60d42eb71ad143144513eb3f))
+
 ## [1.0.3](https://github.com/pifou25/entity-generator/compare/v1.0.2...v1.0.3) (2023-07-02)
 
 
