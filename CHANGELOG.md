@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/pifou25/entity-generator/compare/v1.0.1...v1.0.2) (2023-07-02)
+
+
+### Bug Fixes
+
+* delete changelog lowercase ([54f208e](https://github.com/pifou25/entity-generator/commit/54f208e96b8542429bf60fae4e7a6afaea9f0c4b))
+
 ## [1.0.1](https://github.com/pifou25/entity-generator/compare/v1.0.0...v1.0.1) (2023-07-02)
 
 
