@@ -29,6 +29,7 @@ jobs:
           cache: 'npm'
 
       - name: semantic
+        # should use dry-run to get the released version
         run: |
           npm install
           npx --package=@semantic-release/changelog@6 \
