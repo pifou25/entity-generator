@@ -22,6 +22,11 @@ jobs:
         # https://github.com/marketplace/actions/checkout
         uses: actions/checkout@v3
 
+      - name: debug informations
+        # just for test
+        run: |
+          printenv
+
       - name: Set up QEMU
         # https://github.com/marketplace/actions/docker-setup-qemu
         # set up more platforms (default = all)
@@ -63,4 +68,4 @@ jobs:
           push: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-          tags: "${{ github.ref.name }}"
+          tags: "${{ github.ref_name }}"
