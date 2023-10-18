@@ -23,23 +23,23 @@ jobs:
         uses: "actions/checkout@v2"
 
       - name: "Initialize Docker network"
-        run: 'docker network create ${{ network }}'
+        run: 'docker network create ${{ env.network }}'
     
       - name: "Initialize Database with content"
         run: |
-          docker run --detach --network ${{ network }} --name ${{ db-hostname }} \
+          docker run --detach --network ${{ env.network }} --name ${{ env.db-hostname }} \
             --env MARIADB_USER=user \
             --env MARIADB_PASSWORD=password \
-            --env MARIADB_ROOT_PASSWORD=${{ root-password }} \
+            --env MARIADB_ROOT_PASSWORD=${{ env.root-password }} \
             -v $PWD/tests/sql:/docker-entrypoint-initdb.d  mariadb:latest
 
       - name: "Run the Entity Generator"
         run: |
-          docker run --rm -v $PWD/entities:/app/entities --network ${{ network }} \
-           -e MYSQL_HOSTNAME=${{ db-hostname }} \
-           -e MYSQL_DATABASE=${{ database-name }} \
+          docker run --rm -v $PWD/entities:/app/entities --network ${{ env.network }} \
+           -e MYSQL_HOSTNAME=${{ env.db-hostname }} \
+           -e MYSQL_DATABASE=${{ env.database-name }} \
            -e MYSQL_USERNAME=root \
-           -e MYSQL_PASSWORD=${{ root-password }} \
+           -e MYSQL_PASSWORD=${{ env.root-password }} \
             pifou25/entity-generator:master
 
       - uses: actions/upload-artifact@v3
