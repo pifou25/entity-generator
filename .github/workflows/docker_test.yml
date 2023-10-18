@@ -35,7 +35,9 @@ jobs:
             -v $PWD/tests/sql:/docker-entrypoint-initdb.d  mariadb:latest
 
       - name: "Wait for MariaDB to be ready"
-        run: 'sleep 5'
+        run: |
+          sleep 5
+          mkdir entities
 
       - name: "Run the Entity Generator"
         run: |
