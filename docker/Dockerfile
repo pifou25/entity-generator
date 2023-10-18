@@ -21,4 +21,4 @@ ENV MYSQL_DATABASE=database
 ENV MYSQL_USERNAME=username
 ENV MYSQL_PASSWORD=password
 
-CMD ["php", "/app/index.php", "--hostname", $MYSQL_HOSTNAME, "--database", $MYSQL_DATABASE, "--username", $MYSQL_USERNAME, "--password", $MYSQL_PASSWORD]
+CMD php index.php --hostname $MYSQL_HOSTNAME --database $MYSQL_DATABASE --username $MYSQL_USERNAME --password $MYSQL_PASSWORD
