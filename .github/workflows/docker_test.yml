@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v4"
 
       - name: "Initialize Docker network"
         run: 'docker network create ${{ env.network }}'
@@ -52,7 +52,7 @@ jobs:
         run: |
           echo $PWD
           ls
-          ls $PWD/entities
+          ls $PWD/entities -alsh
 
       - uses: actions/upload-artifact@v3
         with:
