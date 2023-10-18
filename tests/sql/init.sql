@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS jeedom;
 -- --------------------------------------------------------
-
+USE jeedom;
 --
 -- Structure de la table `calendar_event`
 --
