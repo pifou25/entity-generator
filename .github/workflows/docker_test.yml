@@ -37,11 +37,11 @@ jobs:
         run: |
           docker run --rm -v $PWD/entities:/app/entities --network ${{ network }} \
            -e MYSQL_HOSTNAME=${{ db-hostname }} \
-           -e MYSQL_DATABASE=jeedom \
+           -e MYSQL_DATABASE=${{ database-name }} \
            -e MYSQL_USERNAME=root \
            -e MYSQL_PASSWORD=${{ root-password }} \
             pifou25/entity-generator:master
-      	
+
       - uses: actions/upload-artifact@v3
         with:
           name: entity-generated
