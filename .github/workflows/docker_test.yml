@@ -33,6 +33,9 @@ jobs:
             --env MARIADB_ROOT_PASSWORD=${{ env.root-password }} \
             -v $PWD/tests/sql:/docker-entrypoint-initdb.d  mariadb:latest
 
+      - name: "Wait for MariaDB to be ready"
+        run: 'sleep 10'
+
       - name: "Run the Entity Generator"
         run: |
           docker run --rm -v $PWD/entities:/app/entities --network ${{ env.network }} \
