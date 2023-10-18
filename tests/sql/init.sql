@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `jeedom`
 --
-USE jeedom;
+CREATE DATABASE IF NOT EXISTS jeedom;
 -- --------------------------------------------------------
 
 --
