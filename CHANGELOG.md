@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/pifou25/entity-generator/compare/v1.1.0...v1.2.0) (2023-10-18)
+
+
+### Features
+
+* workflow for docker build ([#2](https://github.com/pifou25/entity-generator/issues/2)) ([b308679](https://github.com/pifou25/entity-generator/commit/b30867905461ccb4d3769d976397ccdf95a51fe4))
+
 # [1.1.0](https://github.com/pifou25/entity-generator/compare/v1.0.3...v1.1.0) (2023-07-02)
 
 
