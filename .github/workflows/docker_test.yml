@@ -35,10 +35,7 @@ jobs:
             -v $PWD/tests/sql:/docker-entrypoint-initdb.d  mariadb:latest
 
       - name: "Wait for MariaDB to be ready"
-        run: 'sleep 10'
-
-      - name: "MariaDB logs"
-        run: 'docker logs ${{ env.db-hostname }}'
+        run: 'sleep 5'
 
       - name: "Run the Entity Generator"
         run: |
@@ -48,6 +45,12 @@ jobs:
            -e MYSQL_USERNAME=root \
            -e MYSQL_PASSWORD=${{ env.root-password }} \
             pifou25/entity-generator:master
+
+      - name: "list results"
+        run: |
+          echo $PWD
+          ls
+          ls $PWD/entities
 
       - uses: actions/upload-artifact@v3
         with:
