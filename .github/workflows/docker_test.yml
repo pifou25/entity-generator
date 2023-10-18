@@ -36,6 +36,9 @@ jobs:
       - name: "Wait for MariaDB to be ready"
         run: 'sleep 10'
 
+      - name: "MariaDB logs"
+        run: 'docker logs ${{ env.db-hostname }}'
+
       - name: "Run the Entity Generator"
         run: |
           docker run --rm -v $PWD/entities:/app/entities --network ${{ env.network }} \
