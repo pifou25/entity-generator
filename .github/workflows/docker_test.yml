@@ -37,7 +37,6 @@ jobs:
       - name: "Wait for MariaDB to be ready"
         run: |
           sleep 5
-          mkdir entities
 
       - name: "Run the Entity Generator"
         run: |
@@ -47,12 +46,6 @@ jobs:
            -e MYSQL_USERNAME=root \
            -e MYSQL_PASSWORD=${{ env.root-password }} \
             pifou25/entity-generator:master
-
-      - name: "list results"
-        run: |
-          echo $PWD
-          ls
-          ls $PWD/entities -alsh
 
       - uses: actions/upload-artifact@v3
         with:
