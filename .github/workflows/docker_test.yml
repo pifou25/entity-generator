@@ -30,6 +30,7 @@ jobs:
           docker run --detach --network ${{ env.network }} --name ${{ env.db-hostname }} \
             --env MARIADB_USER=user \
             --env MARIADB_PASSWORD=password \
+            --env MARIADB_DATABASE=${{ env.daatabase-name }} \
             --env MARIADB_ROOT_PASSWORD=${{ env.root-password }} \
             -v $PWD/tests/sql:/docker-entrypoint-initdb.d  mariadb:latest
 
