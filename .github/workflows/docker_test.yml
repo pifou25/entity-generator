@@ -1,0 +1,48 @@
+name: "Docker Test"
+
+on:
+  push:
+    branches:
+      - "master"
+      - "test"
+
+env:
+  network: "db_network"
+  db-hostname: "mariadb-host"
+  root-password: "admin"
+  database-name: "jeedom"
+
+
+jobs:
+  test1:
+    name: "Test the Docker image with SQL database"
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+
+      - name: "Initialize Docker network"
+        run: 'docker network create ${{ network }}'
+    
+      - name: "Initialize Database with content"
+        run: |
+          docker run --detach --network ${{ network }} --name ${{ db-hostname }} \
+            --env MARIADB_USER=user \
+            --env MARIADB_PASSWORD=password \
+            --env MARIADB_ROOT_PASSWORD=${{ root-password }} \
+            -v $PWD/tests/sql:/docker-entrypoint-initdb.d  mariadb:latest
+
+      - name: "Run the Entity Generator"
+        run: |
+          docker run --rm -v $PWD/entities:/app/entities --network ${{ network }} \
+           -e MYSQL_HOSTNAME=${{ db-hostname }} \
+           -e MYSQL_DATABASE=jeedom \
+           -e MYSQL_USERNAME=root \
+           -e MYSQL_PASSWORD=${{ root-password }} \
+            pifou25/entity-generator:master
+      	
+      - uses: actions/upload-artifact@v3
+        with:
+          name: entity-generated
+          path: $PWD/entities
