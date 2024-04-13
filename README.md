@@ -11,6 +11,7 @@ Highly customizable (typed) entity generator from database. It can generate enti
 [![Total Downloads](https://poser.pugx.org/dodo-it/entity-generator/downloads)](https://packagist.org/packages/dodo-it/entity-generator)
 [![License](https://poser.pugx.org/dodo-it/entity-generator/license)](https://packagist.org/packages/dodo-it/entity-generator)
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
+![Docker Pulls](https://img.shields.io/docker/pulls/pifou25/entity-generator)
 
 
 ## Installation
