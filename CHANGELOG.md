@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/pifou25/entity-generator/compare/v1.2.0...v1.3.0) (2024-04-13)
+
+
+### Bug Fixes
+
+* apply dockerlint advise ([f2747b3](https://github.com/pifou25/entity-generator/commit/f2747b3ed5dccfa0fd4e48384b9848061f9996a8))
+* Dockerfile bash shell ([b9903cb](https://github.com/pifou25/entity-generator/commit/b9903cb4dc5c986a0cd79e3cd0083bc843398c50))
+
+
+### Features
+
+* add dependabot.yaml. update node.js and github action version ([61dbb2f](https://github.com/pifou25/entity-generator/commit/61dbb2fbbdc01ccbfcb421e35351380699f8640c))
+
 # [1.2.0](https://github.com/pifou25/entity-generator/compare/v1.1.0...v1.2.0) (2023-10-18)
 
 
