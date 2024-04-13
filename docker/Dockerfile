@@ -1,4 +1,4 @@
-FROM php:8.2-cli
+FROM php:8.2-cli-bookworm
 
 RUN apt-get update && \
    apt-get -y  --no-install-recommends install git unzip \
@@ -9,7 +9,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
-SHELL ["/bin/ash", "-eo", "pipefail", "-c"]
+SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
 RUN curl -sS https://get.symfony.com/cli/installer | bash
 RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
