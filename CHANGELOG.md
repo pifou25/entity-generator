@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/pifou25/entity-generator/compare/v1.3.0...v1.4.0) (2024-04-13)
+
+
+### Features
+
+* add plenty of available platforms ([664f795](https://github.com/pifou25/entity-generator/commit/664f7951084b2b3fe163c7e351aefa73bfd3e2ca))
+
 # [1.3.0](https://github.com/pifou25/entity-generator/compare/v1.2.0...v1.3.0) (2024-04-13)
 
 
