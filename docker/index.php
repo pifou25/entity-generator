@@ -9,7 +9,7 @@ $longopts = [
 ];
 
 $params = getopt('h:d:u:p:', $longopts);
-var_dump($params);
+// var_dump($params);
 if($params === false){
     die('Missing or bad command line parameters.');
 }

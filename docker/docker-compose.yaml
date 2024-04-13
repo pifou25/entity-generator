@@ -1,0 +1,57 @@
+version: '3.8'
+
+networks:
+  default:
+    name: default_network
+
+services:
+  db:
+    image: mariadb # for pi3/4: ghcr.io/linuxserver/mariadb
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-password}
+      - TZ=${TZ:-Europe/Paris}
+      - MYSQL_JEEDOM_DB=${MYSQL_JEEDOM_DB:-jeedom}
+      - MYSQL_JEEDOM_USER=${MYSQL_JEEDOM_USER:-jeedom}
+      - MYSQL_JEEDOM_PASSWD=${MYSQL_JEEDOM_PASSWD:-jeedom}
+    volumes:
+      # directory for init sql and scripts
+      - ./init:/docker-entrypoint-initdb.d
+
+  generator:
+    image: pifou25/entity-generator
+    environment:
+      - MYSQL_JEEDOM_DB=${MYSQL_JEEDOM_DB:-jeedom}
+      - MYSQL_JEEDOM_USER=${MYSQL_JEEDOM_USER:-jeedom}
+      - MYSQL_JEEDOM_PASSWD=${MYSQL_JEEDOM_PASSWD:-jeedom}
+      - MYSQL_HOST=db
+      - TZ=${TZ:-Europe/Paris}
+    restart: unless-stopped
+    volumes:
+      - ../volumes/jeedom:/var/www/html
+      - ../volumes/backup:/tmp/backup
+    healthcheck:
+      # test for light Jeedom: only HTTP query
+      # test: ["CMD-SHELL", "curl -so /tmp/status http://localhost/here.html || exit 1"]
+      # test for full Jeedom: supervisor script
+      test: ["CMD-SHELL", "/usr/local/bin/healthcheck.sh"]
+      interval: 1m30s
+      retries: 3
+      start_period: 40s
+      timeout: 20s
+    ports:
+      - "80:80"
+    labels:
+      # label chadburn for the "cron" container
+      chadburn.enabled: "true"
+      chadburn.job-exec.jeedom-cron.schedule: "@every 1m"
+      chadburn.job-exec.jeedom-cron.command: "/usr/local/bin/php /var/www/html/core/php/jeeCron.php >> /var/www/html/log/cron.log 2>&1"
+      # label for watchtower: don't check
+      com.centurylinklabs.watchtower.enable: "false"
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "1"
+    tmpfs:
+      - /tmp/jeedom
+ 
