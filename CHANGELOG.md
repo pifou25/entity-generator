@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/pifou25/entity-generator/compare/v1.4.1...v1.4.2) (2024-04-13)
+
+
+### Bug Fixes
+
+* remove arm/v7? ([dcb6667](https://github.com/pifou25/entity-generator/commit/dcb66675d0946ce0edc98a70c2a3e876a75ad3e2))
+
 ## [1.4.1](https://github.com/pifou25/entity-generator/compare/v1.4.0...v1.4.1) (2024-04-13)
 
 
