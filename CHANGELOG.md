@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/pifou25/entity-generator/compare/v1.4.0...v1.4.1) (2024-04-13)
+
+
+### Bug Fixes
+
+* remove some useless platforms ([95b1876](https://github.com/pifou25/entity-generator/commit/95b1876f4a3b66c697a59f263f0f250d9c51d5cc))
+
 # [1.4.0](https://github.com/pifou25/entity-generator/compare/v1.3.0...v1.4.0) (2024-04-13)
 
 
