@@ -10,8 +10,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
-RUN curl -sS https://get.symfony.com/cli/installer | bash
-RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
+# try another supposed multi-platform install instead of cli/installer
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && \
+    apt install symfony-cli
+# RUN curl -sS https://get.symfony.com/cli/installer | bash
+# RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 WORKDIR /app
 RUN composer require dodo-it/entity-generator
