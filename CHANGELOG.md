@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/pifou25/entity-generator/compare/v1.4.3...v1.5.0) (2024-04-14)
+
+
+### Features
+
+* add docker-compose example ([6f09d81](https://github.com/pifou25/entity-generator/commit/6f09d814181a891ff95c0c433a6abfc185cc21df))
+
 ## [1.4.3](https://github.com/pifou25/entity-generator/compare/v1.4.2...v1.4.3) (2024-04-14)
 
 
