@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/pifou25/entity-generator/compare/v1.4.2...v1.4.3) (2024-04-14)
+
+
+### Bug Fixes
+
+* symfony installation multi-platform ([3dc5594](https://github.com/pifou25/entity-generator/commit/3dc55946d3570adba3396f199d9d29b664492208))
+
 ## [1.4.2](https://github.com/pifou25/entity-generator/compare/v1.4.1...v1.4.2) (2024-04-13)
 
 
