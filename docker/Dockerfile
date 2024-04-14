@@ -1,3 +1,4 @@
+# FROM ghcr.io/symfony-cli/symfony-cli:5.8.15 AS symfony
 FROM php:8.2-cli-bookworm
 
 RUN apt-get update && \
@@ -10,9 +11,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
 SHELL ["/bin/bash", "-eo", "pipefail", "-c"]
-# try another supposed multi-platform install instead of cli/installer
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && \
-    apt install symfony-cli
+COPY --from=symfony /usr/local/bin/symfony /usr/local/bin/symfony
 # RUN curl -sS https://get.symfony.com/cli/installer | bash
 # RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
