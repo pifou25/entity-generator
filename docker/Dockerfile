@@ -1,4 +1,5 @@
-# FROM ghcr.io/symfony-cli/symfony-cli:5.8.15 AS symfony
+FROM ghcr.io/symfony-cli/symfony-cli:5.8.15 AS symfony
+
 FROM php:8.2-cli-bookworm
 
 RUN apt-get update && \
