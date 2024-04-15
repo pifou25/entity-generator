@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/pifou25/entity-generator/compare/v1.5.0...v1.5.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* symfony from ghcr.io ([c374815](https://github.com/pifou25/entity-generator/commit/c3748155493c62a11624bfee57592c98449dea75))
+
 # [1.5.0](https://github.com/pifou25/entity-generator/compare/v1.4.3...v1.5.0) (2024-04-14)
 
 
