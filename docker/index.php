@@ -22,8 +22,11 @@ $config = new \DodoIt\EntityGenerator\Generator\Config([
     'namespace' => 'Examples\Pdo\Entities'
 ]);
 
+echo "connect to {$params['hostname']} {$params['database']} ...\n";
 $pdo = new \PDO("mysql:dbname={$params['database']};host={$params['hostname']}", $params['username'], $params['password']);
 
+echo "ok! Generating entities...\n";
 $generatorFactory = new \DodoIt\EntityGenerator\Factory\GeneratorPdoFactory($pdo);
 $generator = $generatorFactory->create($config);
 $generator->generate();
+echo "job done ! nb entities generated : " . count(glob('entities/*'));
