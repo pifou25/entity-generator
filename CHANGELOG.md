@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/pifou25/entity-generator/compare/v1.5.1...v1.6.0) (2024-04-18)
+
+
+### Features
+
+* use compose ([564d770](https://github.com/pifou25/entity-generator/commit/564d7706ab9c55f971e06c40e7872c9569f7f69a))
+
 ## [1.5.1](https://github.com/pifou25/entity-generator/compare/v1.5.0...v1.5.1) (2024-04-15)
 
 
