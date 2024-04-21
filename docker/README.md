@@ -1,30 +1,15 @@
 # Docker integration
 
 ## Entity Generator image
-https://hub.docker.com/r/pifou25/entity-generator
 
-## Example of generation
+![Docker Pulls](https://img.shields.io/docker/pulls/pifou25/entity-generator)
+ https://hub.docker.com/r/pifou25/entity-generator
 
-Starting from a plain flat SQL file, steps to generate PHP entities:
+## Generation from existing database
+The database should be accessible from the docker network, the hostname is either
+the name of the Mysql running container, or `localhost` if db is running on host.
+The below command will generate entities into `./entities` directory.
 
-### Newtork creation
-We first need to create a network to share the container hostname.
-```
-docker network create some-network
-```
-
-### start mysql or mariadb with the init SQL data
-Now we run mysql on this network with the hostname, and with the SQL init data into ./init directory.
-```
-docker run --detach --rm --name some-mariadb -v $PWD/init:/docker-entrypoint-initdb.d --hostname some-mariadb --network some-network \
-  --env MARIADB_USER=example-user \
-  --env MARIADB_PASSWORD=my_cool_secret \
-  --env MARIADB_DATABASE=exmple-database \
-  --env MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:latest
-```
-
-### start entity-generator image
-Finally we generate every entities from the previous database into ./entities
 ```
 docker run --rm -v $PWD/entities:/app/entities --network some-network \
    -e MYSQL_HOSTNAME=some-mariadb \
@@ -34,9 +19,12 @@ docker run --rm -v $PWD/entities:/app/entities --network some-network \
     pifou25/entity-generator
 ```
 
-### stop mysql server
-cleaning
-```
-docker stop some-mariadb
-docker network rm some-network
-```
+## Generation from flat plain SQL file
+
+The `docker compose` file create a new database and initialize it with SQL data,
+you have to put SQL init file into `./init` directory. When db is ready, 
+ the entity-generator start on it to generate PHP entities.
+
+It is as simple as running this command from your working directory :
+`docker compose up`
+
