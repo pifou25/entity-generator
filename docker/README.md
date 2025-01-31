@@ -19,6 +19,19 @@ docker run --rm -v $PWD/entities:/app/entities --network some-network \
     pifou25/entity-generator
 ```
 
+## namespace and extends example
+The base class must exist into /entities to be declared
+```
+docker run --rm -v $PWD/include/entities:/app/entities --network scripts_default \
+   -e MYSQL_HOSTNAME=myhost \
+   -e MYSQL_DATABASE=mydb \
+   -e MYSQL_USERNAME=myuser \
+   -e MYSQL_PASSWORD=mypwd \
+   -e ENTITY_NAMESPACE=Example\\Pdo\\Entities \
+   -e BASECLASS=Example\\Pdo\\Entities\Entity \
+    entity-generator
+```
+
 ## Generation from flat plain SQL file
 
 The `docker compose` file create a new database and initialize it with SQL data,

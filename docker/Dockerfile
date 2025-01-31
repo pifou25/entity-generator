@@ -18,5 +18,9 @@ ENV MYSQL_HOSTNAME=db
 ENV MYSQL_DATABASE=database
 ENV MYSQL_USERNAME=username
 ENV MYSQL_PASSWORD=password
+# ENV BASECLASS=
+# ENV ENTITY_NAMESPACE=
 
-CMD php index.php --hostname $MYSQL_HOSTNAME --database $MYSQL_DATABASE --username $MYSQL_USERNAME --password $MYSQL_PASSWORD
+SHELL ["/bin/bash", "-c"]
+ENTRYPOINT ["php", "index.php"]
+CMD ["php", "index.php"]
