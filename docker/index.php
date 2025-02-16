@@ -10,7 +10,7 @@ $params['password'] = getenv('MYSQL_PASSWORD');
 $params['baseclass'] = getenv('BASECLASS');
 $params['namespace'] = getenv('ENTITY_NAMESPACE');
 
-// vérifier que les paramètres requis pour mysql sont présents
+// check all required mysql parameters
 if(!isset($params['hostname']) || !isset($params['database']) || !isset($params['username']) || !isset($params['password'])) {
     var_dump($params);
     die('Missing or bad command line parameters.');
