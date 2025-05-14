@@ -2,7 +2,7 @@ FROM composer:latest AS vendor
 WORKDIR /vendor
 RUN composer require dodo-it/entity-generator
 
-FROM php:8.2-cli-bookworm
+FROM php:8.4-cli-bookworm
 
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
