@@ -20,7 +20,7 @@ jobs:
       - name: Check Out Repo
         # Check out the repo, using current branch
         # https://github.com/marketplace/actions/checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up QEMU
         # https://github.com/marketplace/actions/docker-setup-qemu
