@@ -17,7 +17,7 @@ updates:
     target-branch: "master"
 
   - package-ecosystem: "docker"
-    directory: "/build/"
+    directory: "/docker/"
     schedule:
       # Check for updates to GitHub Actions every week on Saturday
       interval: "weekly"
