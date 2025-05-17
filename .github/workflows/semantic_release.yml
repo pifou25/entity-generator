@@ -1,0 +1,54 @@
+# this step for master only
+name: Semantic Release
+
+on:
+  push:
+    branches: [ master, develop, 'feat/semver' ]
+  # this is to manually trigger the worklow
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Reason'     
+        default: 'Manual launch'
+
+jobs:
+  # one single job
+  release:
+    name: release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+        # https://github.com/marketplace/actions/setup-node-js-environment
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: semantic
+        # should use dry-run to get the released version
+        run: |
+          # check if pull request is opened or reopened
+          echo "Pull request ${{ github.event_name }} ${{ github.event.type }}\n${{ github.event.type }}"
+          # https://github.com/actions/toolkit/blob/main/packages/github/src/context.ts
+          if [[ ${{ github.event_name }} == "pull_request" ]]; then
+            ARG=""
+          else
+            ARG="--dry-run"
+          fi
+          npm install
+          npx --package=@semantic-release/changelog@6 \
+              --package=@semantic-release/exec@6 \
+              --package=@semantic-release/git@10 \
+              semantic-release $ARG --debug
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - name: Display Github summary
+        if: ${{ env.NEXT_RELEASE_VERSION != '' }}
+        run: |
+          echo "New release : ${{ env.NEXT_RELEASE_VERSION }}" >> $GITHUB_STEP_SUMMARY
+  
