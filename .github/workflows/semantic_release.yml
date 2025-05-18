@@ -3,7 +3,7 @@ name: Semantic Release
 
 on:
   push:
-    branches: [ master, semantic_release ]
+    branches: [ master, develop, 'feat/semver' ]
   # this is to manually trigger the worklow
   workflow_dispatch:
     inputs:
@@ -31,11 +31,19 @@ jobs:
       - name: semantic
         # should use dry-run to get the released version
         run: |
+          # check if pull request is opened or reopened
+          echo "Pull request ${{ github.event_name }} ${{ github.event.type }}\n${{ github.event.type }}"
+          # https://github.com/actions/toolkit/blob/main/packages/github/src/context.ts
+          if [[ ${{ github.event_name }} == "pull_request" ]]; then
+            ARG=""
+          else
+            ARG="--dry-run"
+          fi
           npm install
           npx --package=@semantic-release/changelog@6 \
               --package=@semantic-release/exec@6 \
               --package=@semantic-release/git@10 \
-              semantic-release
+              semantic-release $ARG --debug
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 

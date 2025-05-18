@@ -8,10 +8,15 @@
       "master",
       {"name": "semantic_release", "channel": "alpha"},
       {
+        "name": "feat/semver",
+        "channel": "alpha"
+      },
+      {
         "name": "develop",
         "prerelease": true
       }
     ],
+    "repositoryUrl": "https://github.com/pifou25/entity-generator.git",
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
