@@ -10,6 +10,7 @@ Highly customizable (typed) entity generator from database. It can generate enti
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
 [![Total Downloads](https://poser.pugx.org/dodo-it/entity-generator/downloads)](https://packagist.org/packages/dodo-it/entity-generator)
 [![License](https://poser.pugx.org/dodo-it/entity-generator/license)](https://packagist.org/packages/dodo-it/entity-generator)
+[![Docker Pulls](https://img.shields.io/docker/pulls/pifou25/entity-generator)](https://hub.docker.com/r/pifou25/entity-generator)
 
 ## Installation
 
