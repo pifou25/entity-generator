@@ -5,13 +5,15 @@ on:
     # only trigger CI when push on following branches
     branches:
       - 'master'
-      - 'feat/docker_build_workflow'
+      - 'feat/auto_upstream_update'
   # this is to manually trigger the worklow
   workflow_dispatch:
     inputs:
       logLevel:
         description: 'Reason'     
         default: 'Manual launch'
+  schedule:
+    - cron: "0 8 * * 1" # Weekly at 08:00 on Monday
 
 jobs:
   build:
