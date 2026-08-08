@@ -5,16 +5,53 @@ on:
     # only trigger CI when push on following branches
     branches:
       - 'master'
-      - 'feat/docker_build_workflow'
+      - 'feat/auto_upstream_update'
   # this is to manually trigger the worklow
   workflow_dispatch:
     inputs:
       logLevel:
         description: 'Reason'     
         default: 'Manual launch'
+  schedule:
+    - cron: "0 8 * * 1" # Weekly at 08:00 on Monday
 
 jobs:
+  check-upstream:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allow writing to repository contents
+      pull-requests: write  # Allow creating pull requests (if needed)
+    outputs:
+      should_build: ${{ steps.php-image-update.outputs.update == 'true' || steps.composer-image-update.outputs.update == 'true' || github.event_name != 'schedule' }}
+    steps:
+      - name: Check Out Repo
+        # Check out the repo, using current branch
+        # https://github.com/marketplace/actions/checkout
+        uses: actions/checkout@v6
+
+      - name: Update Docker 
+        id: php-image-update
+        uses: fontebasso/docker-hub-upstream@v1
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+        with:
+          token: ${{ secrets.ENTITY_GENERTOR_SECRET }}
+          image: 'library/php'
+          tag: '8.5-cli-trixie'
+
+      - name: Update Docker 
+        id: composer-image-update
+        uses: fontebasso/docker-hub-upstream@v1
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+        with:
+          token: ${{ secrets.ENTITY_GENERTOR_SECRET }}
+          image: 'composer'
+          tag: 'latest'
+
   build:
+    needs: check-upstream
+    if: ${{ needs.check-upstream.outputs.should_build == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Check Out Repo
