@@ -5,51 +5,51 @@ namespace DodoIt\EntityGenerator\Entity;
 class Column extends Entity
 {
 
-	protected string $Field;
+    protected string $Field;
 
-	protected string $Type;
+    protected string $Type;
 
-	protected string $Null;
+    protected string $Null;
 
-	protected ?string $Key;
+    protected ?string $Key;
 
-	protected string|int|null $Default;
+    protected string|int|null $Default;
 
-	protected ?string $Extra;
+    protected ?string $Extra;
 
-	public function getField(): string
-	{
-		return $this->Field;
-	}
+    public function getField(): string
+    {
+        return $this->Field;
+    }
 
-	public function getType(): string
-	{
-		return $this->Type;
-	}
+    public function getType(): string
+    {
+        return $this->Type;
+    }
 
-	public function isNullable(): bool
-	{
-		return $this->Null === 'YES';
-	}
+    public function isNullable(): bool
+    {
+        return $this->Null === 'YES';
+    }
 
-	public function getKey(): ?string
-	{
-		return $this->Key;
-	}
+    public function getKey(): ?string
+    {
+        return $this->Key;
+    }
 
-	public function getDefault(): string|int|null
-	{
-		return $this->Default;
-	}
+    public function getDefault(): string|int|null
+    {
+        return $this->Default;
+    }
 
-	public function getExtra(): ?string
-	{
-		return $this->Extra;
-	}
+    public function getExtra(): ?string
+    {
+        return $this->Extra;
+    }
 
-	public function isPrimary(): bool
-	{
-		return $this->Key === 'PRI';
-	}
+    public function isPrimary(): bool
+    {
+        return $this->Key === 'PRI';
+    }
 
 }

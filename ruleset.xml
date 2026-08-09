@@ -5,17 +5,27 @@
         <exclude name="SlevomatCodingStandard.Operators.DisallowIncrementAndDecrementOperators" />
     </rule>
     <rule name="SlevomatCodingStandard.Commenting.DisallowOneLinePropertyDocComment" />
+    <!-- Exclure l'ancienne règle Squiz si elle est chargée par un standard global -->
+    <rule ref="Squiz.WhiteSpace.LanguageConstructSpacing">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Inclure la nouvelle règle maintenue -->
+    <rule ref="Generic.WhiteSpace.LanguageConstructSpacing"/>
+
     <rule ref="Generic.WhiteSpace.ScopeIndent">
-    <properties>
-        <property name="indent" value="4"/>
-    </properties>
-</rule>
+        <properties>
+            <property name="indent" value="4"/>
+        </properties>
+    </rule>
     <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
         <properties>
             <property name="allowFullyQualifiedGlobalClasses" value="true"/>
         </properties>
     </rule>
-    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent">
+        <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+    </rule>
     <rule ref="Generic.Metrics.CyclomaticComplexity">
         <properties>
             <property name="complexity" value="14" />

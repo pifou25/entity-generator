@@ -20,7 +20,9 @@ if($params['baseclass']) {
     include __DIR__ . BASEPATH . '/' . $params['baseclass'] . '.php';
 } else {
     // Default empty entity class
-    class Entity {}
+    class Entity
+    {
+    }
     $params['baseclass'] = Entity::class;
 }
 echo "baseclass is defined: {$params['baseclass']}\n";
@@ -28,13 +30,15 @@ if(!$params['namespace']) {
     $params['namespace'] = 'Examples\Pdo\Entities';
 }
 
-include('vendor/autoload.php');
+require 'vendor/autoload.php';
 
-$config = new \DodoIt\EntityGenerator\Generator\Config([
+$config = new \DodoIt\EntityGenerator\Generator\Config(
+    [
     'path' =>  __DIR__ . BASEPATH,
     'extends' => $params['baseclass'],  // \Examples\Pdo\Entities\Entity::class,
     'namespace' => $params['namespace'] // 'Examples\Pdo\Entities'
-]);
+    ]
+);
 
 echo "connect to {$params['hostname']} {$params['database']} ...\n";
 $pdo = new \PDO("mysql:dbname={$params['database']};host={$params['hostname']}", $params['username'], $params['password']);
