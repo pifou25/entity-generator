@@ -40,7 +40,8 @@ class EntityTest extends TestCase
             'username' => 'user',
             'active' => 1,
             'last_login' => new DateTime('2019-01-24'),
-            ], $modifications
+            ],
+            $modifications
         );
     }
 

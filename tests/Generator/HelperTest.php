@@ -16,7 +16,8 @@ class HelperTest extends TestCase
         ];
         $result = Helper::multiArrayFlip($arr);
         $this->assertEquals(
-            $result, [
+            $result,
+            [
             'int' => 'int',
             'bigint' => 'int',
             'time' => '\DateInterval',

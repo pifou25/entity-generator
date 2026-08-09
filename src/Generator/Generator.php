@@ -184,7 +184,7 @@ class Generator
         }
 
         /**
-    * @var array<string, string> $typeMapping 
+    * @var array<string, string> $typeMapping
 */
         $typeMapping = Helper::multiArrayFlip($this->config->typeMapping);
 
