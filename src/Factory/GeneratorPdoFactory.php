@@ -10,18 +10,18 @@ use PDO;
 class GeneratorPdoFactory
 {
 
-	private PDO $pdo;
+    private PDO $pdo;
 
-	public function __construct(PDO $pdo)
-	{
-		$this->pdo = $pdo;
-	}
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
 
-	public function create(Config $config): Generator
-	{
-		$repository = new PdoRepository($this->pdo);
+    public function create(Config $config): Generator
+    {
+        $repository = new PdoRepository($this->pdo);
 
-		return new Generator($repository, $config);
-	}
+        return new Generator($repository, $config);
+    }
 
 }

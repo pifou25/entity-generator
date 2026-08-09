@@ -10,56 +10,56 @@ namespace DodoIt\EntityGenerator\Tests\TestEntities;
  */
 class PhpDocPropertyEntity extends \DodoIt\EntityGenerator\Entity\Entity
 {
-	public const TABLE_NAME = 'php_doc_properties';
+    public const TABLE_NAME = 'php_doc_properties';
 
-	public function getId(): int
-	{
-		return $this->id;
-	}
-
-
-	public function setId(int $value): self
-	{
-		$this['id'] = $value;
-		return $this;
-	}
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
 
-	public function getTitle(): ?string
-	{
-		return $this->title;
-	}
+    public function setId(int $value): self
+    {
+        $this['id'] = $value;
+        return $this;
+    }
 
 
-	public function setTitle(?string $value): self
-	{
-		$this['title'] = $value;
-		return $this;
-	}
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
 
 
-	public function getPublished(): bool
-	{
-		return $this->published;
-	}
+    public function setTitle(?string $value): self
+    {
+        $this['title'] = $value;
+        return $this;
+    }
 
 
-	public function setPublished(bool $value): self
-	{
-		$this['published'] = $value;
-		return $this;
-	}
+    public function getPublished(): bool
+    {
+        return $this->published;
+    }
 
 
-	public function getCreatedAt(): ?\DateTimeInterface
-	{
-		return $this->created_at;
-	}
+    public function setPublished(bool $value): self
+    {
+        $this['published'] = $value;
+        return $this;
+    }
 
 
-	public function setCreatedAt(?\DateTimeInterface $value): self
-	{
-		$this['created_at'] = $value;
-		return $this;
-	}
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->created_at;
+    }
+
+
+    public function setCreatedAt(?\DateTimeInterface $value): self
+    {
+        $this['created_at'] = $value;
+        return $this;
+    }
 }

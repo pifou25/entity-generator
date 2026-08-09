@@ -9,60 +9,60 @@ use DodoIt\EntityGenerator\Entity\Entity;
 class UserEntity extends Entity
 {
 
-	protected int $id;
+    protected int $id;
 
-	protected string $username;
+    protected string $username;
 
-	protected ?DateTimeInterface $last_login = null;
+    protected ?DateTimeInterface $last_login = null;
 
-	protected bool $active;
+    protected bool $active;
 
-	public function getId(): int
-	{
-		return $this->id;
-	}
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-	public function setId(int $value): self
-	{
-		$this->id = $value;
+    public function setId(int $value): self
+    {
+        $this->id = $value;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getUsername(): string
-	{
-		return $this->username;
-	}
+    public function getUsername(): string
+    {
+        return $this->username;
+    }
 
-	public function setUsername(string $value): self
-	{
-		$this->username = $value;
+    public function setUsername(string $value): self
+    {
+        $this->username = $value;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getLastLogin(): ?DateTime
-	{
-		return $this->last_login;
-	}
+    public function getLastLogin(): ?DateTime
+    {
+        return $this->last_login;
+    }
 
-	public function setLastLogin(DateTime $value): self
-	{
-		$this->last_login = $value;
+    public function setLastLogin(DateTime $value): self
+    {
+        $this->last_login = $value;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function isActive(): bool
-	{
-		return $this->active;
-	}
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
 
-	public function setActive(bool $value): self
-	{
-		$this->active = $value;
+    public function setActive(bool $value): self
+    {
+        $this->active = $value;
 
-		return $this;
-	}
+        return $this;
+    }
 
 }

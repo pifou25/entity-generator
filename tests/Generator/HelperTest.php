@@ -8,38 +8,40 @@ use PHPUnit\Framework\TestCase;
 class HelperTest extends TestCase
 {
 
-	public function testMultiArrayFlip(): void
-	{
-		$arr = [
-			'int' => ['int', 'bigint'],
-			'\DateInterval' => ['time'],
-		];
-		$result = Helper::multiArrayFlip($arr);
-		$this->assertEquals($result, [
-			'int' => 'int',
-			'bigint' => 'int',
-			'time' => '\DateInterval',
-		]);
-	}
+    public function testMultiArrayFlip(): void
+    {
+        $arr = [
+        'int' => ['int', 'bigint'],
+        '\DateInterval' => ['time'],
+        ];
+        $result = Helper::multiArrayFlip($arr);
+        $this->assertEquals(
+            $result, [
+            'int' => 'int',
+            'bigint' => 'int',
+            'time' => '\DateInterval',
+            ]
+        );
+    }
 
-	public function testCamelize(): void
-	{
-		$this->assertEquals('User', Helper::camelize('users'));
-		$this->assertEquals('UserLogin', Helper::camelize('users_logins'));
-	}
+    public function testCamelize(): void
+    {
+        $this->assertEquals('User', Helper::camelize('users'));
+        $this->assertEquals('UserLogin', Helper::camelize('users_logins'));
+    }
 
-	public function testGetPhpDocProperties(): void
-	{
-		$comment = '/**
+    public function testGetPhpDocProperties(): void
+    {
+        $comment = '/**
 		 * @property int $id
 		 * @property string $title
 		 * @property int $published
 		 * @property \DateTimeInterface $created_at
 		 */';
-		$result = Helper::getPhpDocComments($comment);
-		$this->assertCount(4, $result);
-		$this->assertEquals('id', $result[0]);
-		$this->assertEquals('created_at', $result[3]);
-	}
+        $result = Helper::getPhpDocComments($comment);
+        $this->assertCount(4, $result);
+        $this->assertEquals('id', $result[0]);
+        $this->assertEquals('created_at', $result[3]);
+    }
 
 }
