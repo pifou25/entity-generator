@@ -79,7 +79,7 @@ class Generator
 		$phpDocProperties = [];
 
 		if (!$this->config->rewrite && class_exists($fqnClassName)) {
-			$this->cloneEntityFromExistingEntity($entity, ClassType::from($fqnClassName)); //@phpstan-ignore-line
+			$this->cloneEntityFromExistingEntity($entity, ClassType::from($fqnClassName));
 			$phpDocProperties = Helper::getPhpDocComments($entity->getComment() ?? '');
 		}
 
@@ -215,9 +215,9 @@ class Generator
 
 	private function cloneEntityFromExistingEntity(ClassType $entity, ClassType $from): void
 	{
-		$entity->setProperties($from->getProperties());
+		$entity->setProperties(array_values($from->getProperties()));
 		$entity->setComment($from->getComment());
-		$entity->setMethods($from->getMethods());
+		$entity->setMethods(array_values($from->getMethods()));
 		$methods = $entity->getMethods();
 
 		foreach ($methods as $method) {
