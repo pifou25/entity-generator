@@ -9,6 +9,7 @@ use DodoIt\EntityGenerator\Repository\IRepository;
 use Nette\NotSupportedException;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpFile;
+use Nette\PhpGenerator\Visibility;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -160,7 +161,7 @@ class GeneratorTest extends TestCase
         $this->config->addDeclareStrictTypes = true;
         $this->config->strictlyTypedProperties = true;
         $this->config->tableConstant = null;
-        $this->config->propertyVisibility = 'public';
+        $this->config->propertyVisibility = Visibility::Public;
         $this->config->generateColumnConstant = false;
         $this->config->addPropertyVarComment = false;
         $this->config->generateSetters = false;

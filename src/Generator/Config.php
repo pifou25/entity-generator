@@ -3,6 +3,7 @@
 namespace DodoIt\EntityGenerator\Generator;
 
 use DodoIt\EntityGenerator\Entity\Entity;
+use Nette\PhpGenerator\Visibility;
 
 class Config
 {
@@ -59,7 +60,7 @@ class Config
 
     public bool $generateSetters = true;
 
-    public string $getterVisibility = 'public';
+    public Visibility $getterVisibility = Visibility::Public;
 
     /**
      * Add trait to generated entity (use TraitName;)
@@ -68,7 +69,7 @@ class Config
 
     public string $getterBody = 'return $this->__FIELD__;';
 
-    public string $setterVisibility = 'public';
+    public Visibility $setterVisibility = Visibility::Public;
 
     public string $setterBody = '$this[\'__FIELD__\'] = $value;' . "\n" . 'return $this;';
 
@@ -82,7 +83,7 @@ class Config
 
     public bool $addPropertyVarComment = true;
 
-    public string $propertyVisibility = 'protected';
+    public Visibility $propertyVisibility = Visibility::Protected;
 
     public bool $generatePhpDocProperties = false;
 

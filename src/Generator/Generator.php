@@ -9,6 +9,7 @@ use DodoIt\EntityGenerator\Repository\IRepository;
 use Exception;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\PhpFile;
+use Nette\PhpGenerator\Visibility;
 use Nette\SmartObject;
 use Nette\Utils\Strings;
 use ReflectionMethod;
@@ -79,12 +80,12 @@ class Generator
         $phpDocProperties = [];
 
         if (!$this->config->rewrite && class_exists($fqnClassName)) {
-            $this->cloneEntityFromExistingEntity($entity, ClassType::from($fqnClassName)); //@phpstan-ignore-line
+            $this->cloneEntityFromExistingEntity($entity, ClassType::from($fqnClassName));
             $phpDocProperties = Helper::getPhpDocComments($entity->getComment() ?? '');
         }
 
         if ($this->config->tableConstant !== null) {
-            $entity->addConstant($this->config->tableConstant, $table)->setVisibility('public');
+            $entity->addConstant($this->config->tableConstant, $table)->setVisibility(Visibility::Public);
         }
 
         if ($this->config->extends !== null) {
@@ -111,7 +112,7 @@ class Generator
                 $mapping += $entity->getProperty('mapping')->getValue();
             }
 
-            $entity->addProperty('mapping', $mapping)->setVisibility('protected')
+            $entity->addProperty('mapping', $mapping)->setVisibility(Visibility::Protected)
                 ->addComment('')->addComment('@var string[]')->addComment('');
         }
 
@@ -199,7 +200,7 @@ class Generator
     {
         if ($this->config->primaryKeyConstant !== null && $column->isPrimary()) {
             $entity->addConstant($this->config->primaryKeyConstant, $column->getField())
-                ->setVisibility('public');
+                ->setVisibility(Visibility::Public);
         }
 
         if ($this->config->generateColumnConstant) {
@@ -212,7 +213,7 @@ class Generator
             $constants = $entity->getConstants();
 
             if (!isset($constants[$column->getField()])) {
-                $entity->addConstant($columnConstant, $column->getField())->setVisibility('public');
+                $entity->addConstant($columnConstant, $column->getField())->setVisibility(Visibility::Public);
             }
         }
     }
