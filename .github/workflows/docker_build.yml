@@ -1,19 +1,22 @@
 name: Docker Hub Image CI Builder
 
 on:
+  pull_request:
+    paths-ignore:
+      - ".docs/**"
+    branches:
+      - master
+      - develop
   push:
     # only trigger CI when push on following branches
     branches:
       - 'master'
-      - 'feat/auto_upstream_update'
   # this is to manually trigger the worklow
   workflow_dispatch:
     inputs:
       logLevel:
         description: 'Reason'     
         default: 'Manual launch'
-  schedule:
-    - cron: "0 8 * * 1" # Weekly at 08:00 on Monday
 
 jobs:
   build:
