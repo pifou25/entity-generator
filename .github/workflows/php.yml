@@ -4,11 +4,12 @@ on:
   pull_request:
     paths-ignore:
       - ".docs/**"
+    branches:
+      - master
+      - develop
   push:
     branches:
       - "master"
-  schedule:
-    - cron: "0 8 * * 1" # At 08:00 on Monday
 
 env:
   extensions: "json, mbstring, pcov"
