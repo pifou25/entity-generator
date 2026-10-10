@@ -6,7 +6,7 @@ RUN composer require dodo-it/entity-generator
 
 # get latest sha with commands:
 # docker buildx imagetools inspect php:8.5-cli-trixie
-FROM php:8.5-cli-trixie@sha256:54d82ff9be6bd198145e90c917fc9b2e24230b42e52def8deb3554baf61c451a
+FROM php:8.5-cli-trixie@sha256:01a109229f4465bc9ef042d9198f09a4d9da7775a825dbd8572dcdbd8756c4d3
 
 RUN docker-php-ext-install pdo pdo_mysql && docker-php-ext-enable pdo_mysql
 
