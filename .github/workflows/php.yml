@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v7"
 
       - name: "Setup PHP cache environment"
         id: "extcache"
@@ -92,7 +92,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v7"
 
       - name: "Setup PHP cache environment"
         id: "extcache"
@@ -151,7 +151,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v7"
 
       - name: "Setup PHP cache environment"
         id: "extcache"
@@ -207,7 +207,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v2"
+        uses: "actions/checkout@v7"
 
       - name: "Setup PHP cache environment"
         id: "extcache"
