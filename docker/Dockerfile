@@ -1,6 +1,6 @@
 # get latest sha with commands:
 # docker buildx imagetools inspect composer:latest
-FROM composer:latest@sha256:4d71c3c2109c61d5415544264b59ad4087e4c5b7244481723664138fd36d5040 AS vendor
+FROM composer:latest@sha256:af98f42dfff7c68ba8d53c2164fd9fde1087b7d449514baa38c418b1f6bc4bac AS vendor
 WORKDIR /vendor
 RUN composer require dodo-it/entity-generator
 
